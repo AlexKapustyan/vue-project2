@@ -1,36 +1,24 @@
 <template>
   <div id="app">
-    <post-page> </post-page>
+    <!-- <post-page/> -->
+		<sign-up />
   </div>
 </template>
 
 <script>
-import PostPage from "./components/PostPage.vue";
+// import PostPage from "./components/PostPage.vue";
+import SignUp from "./components/SignUp.vue";
 
 export default {
   name: "App",
   components: {
-    PostPage,
+    // PostPage,
+		SignUp,
   },
 };
 
-// import HelloWorld from './components/HelloWorld.vue'
-
-// export default {
-//   name: 'App',
-//   components: {
-//     HelloWorld
-//   }
-// }
 </script>
 
 <style>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
+
 </style>

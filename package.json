@@ -40,5 +40,9 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "main": "index.js",
+  "repository": "git@github.com:AlexKapustyan/vue-project2.git",
+  "author": "Alex Kapustian <alex111pr@gmail.com>",
+  "license": "MIT"
 }
