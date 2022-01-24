@@ -1,0 +1,20 @@
+<template>
+  <div class="app-button">
+    <button @click="$emit('appButtonClic')">Button</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "AppButton",
+  data: () => ({}),
+};
+</script>
+
+<style scoped>
+.app-button button {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+</style>

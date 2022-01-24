@@ -278,39 +278,39 @@ export default {
 
 <style scoped lang="scss">
 .sign-up-page {
-	display: flex;
-	flex-direction: column;
-	width: 500px;
-	margin-left: 20%;
-	margin-top: 10%;
-	padding: 50px;
-	border: 1px solid rgb(73, 73, 223);
-	background-color: rgb(73, 73, 223);
-	color: #fff;
-	border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin-left: 35%;
+  margin-top: 1%;
+  padding: 20px;
+  border: 1px solid rgb(73, 73, 223);
+  background-color: rgb(73, 73, 223);
+  color: #fff;
+  border-radius: 10px;
 }
 
 .sign-up-page__title {
-	font-size: 30px;
-	text-align: center;
+  font-size: 30px;
+  text-align: center;
 }
 
 .sign-up-page__form {
   display: flex;
-  flex-direction: column; 
-	padding: 0 50px; 
+  flex-direction: column;
+  padding: 0 50px;
 }
 
-.sign-up-page__form div {
+.sign-up-page__form-item {
   margin-bottom: 20px;
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 #editing-view-port {
-	margin: 0 10px 0 10px;
+  margin: 0 10px 0 10px;
 }
-
 </style>
 
 
