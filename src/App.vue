@@ -11,7 +11,10 @@
       @backPopUpEvent="backPopUpEvent"
       @continuePopUpEvent="continuePopUpEvent"
     />
-    <AppButton @appButtonClic="appButtonClic" />
+    <AppButton
+      appButtonText="Save"
+      @appButtonClick="showMessage('appButtonText')"
+    />
     <LoginPopUp v-if="showLoginPopUp" @closePopUp="closePopUp" />
     <Footer />
   </div>

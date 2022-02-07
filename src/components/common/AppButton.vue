@@ -1,12 +1,13 @@
 <template>
   <div class="app-button">
-    <button @click="$emit('appButtonClic')">Button</button>
+    <button @click="$emit('appButtonClic')">{{ appButtonText }}</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "AppButton",
+  props: ["appButtonText"],
   data: () => ({}),
 };
 </script>
