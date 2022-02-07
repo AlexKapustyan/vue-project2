@@ -16,7 +16,12 @@
         @backPopUpEvent="backPopUpEvent"
         @continuePopUpEvent="continuePopUpEvent"
       />
-      <AppButton @appButtonClic="backPopUpEvent('appButtonMessage')" />
+      <AppButton
+        class="app-but"
+        appButtonText="Save"
+        @appButtonClick="showMessage('appButtonText')"
+        @appButtonClic="backPopUpEvent('appButtonMessage')"
+      />
     </div>
 
     <Footer />
@@ -69,6 +74,9 @@ export default {
     closePopUp() {
       this.showLoginPopUp = false;
     },
+    showMessage(message) {
+      console.log(message);
+    },
   },
 };
 </script>
@@ -78,6 +86,11 @@ export default {
   margin: 0;
   padding: 0;
 }
+
+.app-but {
+  margin-top: 10px;
+}
+
 .app {
   display: flex;
   flex-direction: column;
@@ -91,7 +104,7 @@ export default {
 }
 
 .popup-show {
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 10px 20px;
   font-size: 14px;
   cursor: pointer;

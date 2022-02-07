@@ -23,19 +23,18 @@ export default {
 </script>
 
 <style scoped>
-.app-pop-up {	
-	margin-top: 100px;
-	max-width: 600px;
-	border: 1px solid #000;
-	padding: 10px;
-	margin-bottom: 20px;
-	
+.app-pop-up {
+  margin-top: 20px;
+  max-width: 600px;
+  border: 1px solid #000;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .header {
   display: flex;
   justify-content: end;
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .header button {
@@ -43,18 +42,18 @@ export default {
 }
 
 .footer {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .footer button {
-	min-width: 105px;
-	padding: 10px 20px;
-	font-size: 14px;
-	cursor: pointer;
+  min-width: 105px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .back {
-	margin-right: 20px;
+  margin-right: 20px;
 }
 </style>

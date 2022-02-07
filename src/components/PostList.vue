@@ -1,9 +1,9 @@
 <template>
   <div class="post-list">
-    <post-card />
-		<h2 v-once>
-			{{`Начальное количество статей ${posts.length}`}}
-		</h2>
+    <h2 v-once>
+      {{ `Начальное количество статей ${posts.length}` }}
+    </h2>
+    <PostCard v-for="postItem in posts" :key="postItem.id"  :post="postItem" />    
   </div>
 </template>
 
