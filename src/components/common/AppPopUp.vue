@@ -1,7 +1,7 @@
 <template>
   <div class="app-pop-up">
     <div class="header">
-      <button @click="$emit('closePopUpEven')">X</button>
+      <button @click="$emit('closePopUpEvent')">X</button>
     </div>
 
     <div class="main"></div>

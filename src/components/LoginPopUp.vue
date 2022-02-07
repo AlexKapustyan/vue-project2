@@ -1,17 +1,17 @@
 <template>
   <div class="login popup">
     <div class="login__body popup__body">
-      <div id="tabs" class="tabs _tabs">
+      <div id="tabs" class="tabs tabs">
         <nav class="tabs__nav">
           <div
-            class="tabs__button _tabs-button"
+            class="tabs__button tabs-button"
             @click="signIn = true"
             :class="[signIn ? '_active' : '']"
           >
             Sign In
           </div>
           <div
-            class="tabs__button _tabs-button"
+            class="tabs__button tabs-button"
             @click="signIn = false"
             :class="[!signIn ? '_active' : '']"
           >
@@ -41,7 +41,7 @@ export default {
   name: "LoginPopUp",
   components: {
     LoginSignIn: () => import("./LoginSignIn.vue"),
-    LoginSignUp: () => import("./LoginSignUp.vue"),
+    LoginSignUp: () => import("./LoginSignUp.vue")
   },
   data: () => ({
     signIn: true,

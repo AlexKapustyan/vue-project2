@@ -1,18 +1,24 @@
 <template>
   <div id="app" class="app">
-    <Header class="header" @loginButtonClick="showLoginPopUp = true" />
-    <!-- <button class="popup-show" @click="show = true">Sign up</button> -->
-    <!-- <post-page/> -->
-    <!-- <sign-up /> -->
-    <post-list />
-    <AppPopUp
-      v-if="show"
-      @closePopUpEven="closePopUpEven"
-      @backPopUpEvent="backPopUpEvent"
-      @continuePopUpEvent="continuePopUpEvent"
-    />
-    <AppButton @appButtonClic="appButtonClic" />
-    <LoginPopUp v-if="showLoginPopUp" @closePopUp="closePopUp" />
+    <div class="app-head">
+      <Header class="header" @loginButtonClick="showLoginPopUp = true" />
+      <!-- <button class="popup-show" @click="show = true">Sign up</button> -->
+
+      <LoginPopUp v-if="showLoginPopUp" @closePopUp="closePopUp" />
+    </div>
+    <div class="app-body">
+      <!-- <post-page /> -->
+      <!-- <sign-up /> -->
+      <post-list />
+      <AppPopUp
+        v-if="showPopUpEvent"
+        @closePopUpEvent="closePopUpEvent"
+        @backPopUpEvent="backPopUpEvent"
+        @continuePopUpEvent="continuePopUpEvent"
+      />
+      <AppButton @appButtonClic="showMessage(appButtonMessage)" />
+    </div>
+
     <Footer />
   </div>
 </template>
@@ -38,13 +44,13 @@ export default {
   },
 
   data: () => ({
-    show: true,
+    showPopUpEvent: true,
     showLoginPopUp: false,
   }),
 
   methods: {
-    closePopUpEven() {
-      this.show = false;
+    closePopUpEvent() {
+      this.showPopUpEvent = false;
       console.log("closePopUpEvent");
     },
     backPopUpEvent() {
@@ -59,9 +65,8 @@ export default {
     loginButtonClick() {
       this.showLoginPopUp = true;
     },
-    closePopUp(event) {
-      this.show = false;
-      console.log(event);
+    closePopUp() {
+      this.showLoginPopUp = false;
     },
   },
 };
@@ -78,6 +83,10 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 10px 100px 10px 100px;
+}
+
+.app-head {
+  width: 100%;
 }
 
 .popup-show {
