@@ -54,6 +54,7 @@ export default {
       console.log("closePopUpEvent");
     },
     backPopUpEvent() {
+      this.showPopUpEvent = true;
       console.log("backPopUpEvent");
     },
     continuePopUpEvent() {
@@ -67,7 +68,7 @@ export default {
     },
     closePopUp() {
       this.showLoginPopUp = false;
-    }, 
+    },
   },
 };
 </script>
