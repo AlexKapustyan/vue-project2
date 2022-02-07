@@ -16,7 +16,7 @@
         @backPopUpEvent="backPopUpEvent"
         @continuePopUpEvent="continuePopUpEvent"
       />
-      <AppButton @appButtonClic="showMessage(appButtonMessage)" />
+      <AppButton @appButtonClic="backPopUpEvent('appButtonMessage')" />
     </div>
 
     <Footer />
@@ -67,7 +67,7 @@ export default {
     },
     closePopUp() {
       this.showLoginPopUp = false;
-    },
+    }, 
   },
 };
 </script>
