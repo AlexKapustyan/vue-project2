@@ -1,35 +1,37 @@
 <template>
-  <div class="login-pop-up">
-    <div class="login-child">
-      <div>
-        <button @click="$emit('closePopUp', product)" class="btn">X</button>
+  <div class="login popup">
+    <div class="login__body popup__body">
+      <div id="tabs" class="tabs _tabs">
+        <nav class="tabs__nav">
+          <div
+            class="tabs__button _tabs-button"
+            @click="signIn = true"
+            :class="[signIn ? '_active' : '']"
+          >
+            Sign In
+          </div>
+          <div
+            class="tabs__button _tabs-button"
+            @click="signIn = false"
+            :class="[!signIn ? '_active' : '']"
+          >
+            Sign Up
+          </div>
+        </nav>
+
+        <div class="tabs__body">
+          <keep-alive>
+            <component :is="currentTabComponent" />
+          </keep-alive>
+        </div>
       </div>
-      <section>
-        <div class="tab">
-          <button class="tablincs">Sing In</button>
-          <button class="tablincs">Sing Up</button>
-        </div>
-        <div class="tabcontent">
-          <form action="#">
-            <label for="">Login</label>
-            <input type="text" />
-            <label for="">Password</label>
-            <input type="text" />
-            <button class="but">Sign In</button>
-          </form>
-        </div>
-        <div class="tabcontent">
-          <form action="#">
-            <label for="">Login</label>
-            <input type="text" />
-            <label for="">Password</label>
-            <input type="text" />
-            <label for="">Repeated Password</label>
-            <input type="text" />
-            <button class="but">Sign In</button>
-          </form>
-        </div>
-      </section>
+
+      <button
+        class="login__button-close btn-close"
+        @click="$emit('closePopUp')"
+      >
+        X
+      </button>
     </div>
   </div>
 </template>
@@ -37,157 +39,151 @@
 <script>
 export default {
   name: "LoginPopUp",
-  data: () => ({}),
+  components: {
+    LoginSignIn: () => import("./LoginSignIn.vue"),
+    LoginSignUp: () => import("./LoginSignUp.vue"),
+  },
+  data: () => ({
+    signIn: true,
+  }),
+  computed: {
+    currentTabComponent() {
+      if (this.signIn) {
+        return "LoginSignIn";
+      }
+      return "LoginSignUp";
+    },
+  },
 };
 </script>
 
-<style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rubik&display=swap");
-* {
-  position: relative;
-  padding: 0;
-  border: 0;
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-  font-weight: normal;
-  text-decoration: none;
-  list-style: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  outline: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  cursor: default;
-  -moz-appearance: none !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
+<style scoped lang="scss">
+.login {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  &__body {
+    max-width: 600px;
+    padding: 50px 10px 0;
+    margin: auto;
+    width: 100%;
+  }
+  &__button-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 }
-
-input,
-textarea {
-  cursor: text;
+.tabs {
+  &__nav {
+    display: flex;
+  }
+  &__button {
+    margin-right: 1px;
+    padding: 10px;
+    flex: 0 1 50%;
+    font-size: 1.1em;
+    background-color: #6c96bd;
+    transition: background-color 0.5s ease 0s;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    cursor: pointer;
+    &:last-child {
+      margin-right: 0;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      right: 50%;
+      width: 0;
+      height: 1px;
+      background-color: #fff;
+      bottom: 10px;
+      transition: all 0.5s ease 0s;
+    }
+    &:hover::after {
+      right: 35%;
+      width: 30%;
+      @media (max-width: 767px) {
+        right: 30%;
+        width: 40%;
+      }
+      @media (max-width: 540px) {
+        right: 20%;
+        width: 60%;
+      }
+    }
+    &._active {
+      background-color: #3574ad;
+    }
+  }
+  &__body {
+    padding: 50px;
+    box-shadow: 0 1px 4px 0 rgba(51, 51, 51, 0.3);
+    background-color: #ffffff;
+    @media (max-width: 540px) {
+      padding: 30px 20px;
+    }
+  }
 }
+</style>
 
-a,
-a *,
-button,
-input[type="range"],
-input[type="button"],
-input[type="submit"],
-input[type="reset"],
-input[type="radio"],
-input[type="checkbox"] {
-  cursor: pointer;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-nav,
-section,
-iframe,
-a,
-img,
-form,
-label,
-ul,
-ol {
-  display: block;
-}
-
-.login-pop-up {
-  margin-bottom: 150px;
-  position: fixed;
-  background: #0008;
-  z-index: 30;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.login-child {
-  position: absolute;
-  z-index: 35;
-  overflow: auto;
-  background: #fff;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-body {
-  display: flex;
-  justify-content: center;
-}
-
-section {
-  margin: auto;
-  margin-top: 20%;
-}
-
-.tab {
-  font-size: 0;
-}
-
-.tablincs {
-  margin-right: 2px;
-  font-size: 14px;
-  padding: 0.9375rem 3rem;
-  background-color: #96b7dd;
-  border-top-left-radius: 0.9375rem;
-  border-top-right-radius: 0.9375rem;
-  color: white;
-  font-size: 0.875rem;
-}
-
-.tablincs:last-child {
-  margin-right: 0;
-}
-
-/* .tablincs-active {
-  background-color: #397db4;
-} */
-
-.tabcontent {
-  /* display: none; */
-  padding: 40px 20px;
-  box-shadow: 0 2px 5px rgb(0 0 0 / 50%);
-}
-
-/* .tabcontent-active {
-  display: block;
-} */
-
-form {
+<style lang="scss">
+.form {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  min-height: 307px;
+  @media (max-width: 540px) {
+    min-height: 295px;
+  }
+  &__item {
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    &:last-of-type {
+      margin-bottom: 30px;
+      flex: 1 1 auto;
+    }
+  }
+  &__label {
+    margin-bottom: 2px;
+    font-size: 18px;
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #eeebeb;
+    background-color: #d8e2ef;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0.5px;
+    border-radius: 5px;
+    &:focus {
+      border: 1px solid #3574ad;
+    }
+  }
 }
-
-label {
-  margin-bottom: 20px;
-}
-
-input {
-  margin-bottom: 10px;
-  border-bottom: 1px solid #c3c3c3;
-}
-
-.but {
-  margin-top: 40px;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #508cbd;
-  color: #508cbd;
+.message-block {
+  margin: 30px 0 0;
+  border: none;
+  color: #fff;
+  min-height: 40px;
+  font-size: 16px;
+  &__error,
+  .message-block__error:hover {
+    background-color: #c78585;
+  }
+  &__welcome,
+  .message-block__welcome:hover {
+    background-color: #60b46c;
+    min-height: 80px;
+    font-size: 18px;
+  }
 }
 </style>

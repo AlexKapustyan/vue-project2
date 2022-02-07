@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="app">
-		<Header />
+    <Header class="header" @loginButtonClick="showLoginPopUp = true" />
+    <!-- <button class="popup-show" @click="show = true">Sign up</button> -->
     <!-- <post-page/> -->
     <!-- <sign-up /> -->
     <post-list />
@@ -11,8 +12,8 @@
       @continuePopUpEvent="continuePopUpEvent"
     />
     <AppButton @appButtonClic="appButtonClic" />
-		<LoginPopUp v-if="show" @closePopUp="closePopUp"/>
-		<Footer />
+    <LoginPopUp v-if="showLoginPopUp" @closePopUp="closePopUp" />
+    <Footer />
   </div>
 </template>
 
@@ -22,22 +23,23 @@
 import PostList from "./components/PostList.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
-import LoginPopUp from "./components/LoginPopUp.vue"
+import LoginPopUp from "./components/LoginPopUp.vue";
 
 export default {
   name: "App",
   components: {
-		Header,
-		Footer,
+    Header,
+    Footer,
     // PostPage,
     // SignUp,
     PostList,
     AppPopUp: () => import("./components/common/AppPopUp.vue"),
-		LoginPopUp,
+    LoginPopUp,
   },
 
   data: () => ({
     show: true,
+    showLoginPopUp: false,
   }),
 
   methods: {
@@ -54,7 +56,10 @@ export default {
     appButtonClic() {
       console.log("appButtonClic");
     },
-		closePopUp(event) {
+    loginButtonClick() {
+      this.showLoginPopUp = true;
+    },
+    closePopUp(event) {
       this.show = false;
       console.log(event);
     },
@@ -68,12 +73,17 @@ export default {
   padding: 0;
 }
 .app {
-  /* //text-align: center; */
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 10px 100px 10px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 100px 10px 100px;
+}
 
+.popup-show {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
 }
 </style>
